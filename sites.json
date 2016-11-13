@@ -1,0 +1,22 @@
+[
+  {
+    "base_url": "https:\/\/garfield.com\/",
+    "name": "Garfield",
+    "pattern": "\"(https:\/\/\\w+\\.cloudfront\\.net\/comics\/garfield\/.*?)\""
+  },
+  {
+    "base_url": "http:\/\/dilbert.com\/",
+    "name": "Dilbert",
+    "pattern": "\"(http:\/\/assets.amuniversal.com\/.*?)\""
+  },
+  {
+    "base_url": "http:\/\/explosm.net\/",
+    "name": "Cyanide and happiness",
+    "pattern": "\"(\/\/files.explosm.net\/comics\/.*?)\""
+  },
+  {
+    "base_url": "http:\/\/xkcd.com\/",
+    "name": "XKCD",
+    "pattern": "\"(\/\/imgs.xkcd.com\/comics\/.*?)\""
+  }
+]

@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <title>Comic Aggregator</title>
+    <link href="{{ url_for('static',filename='css/min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/main.css') }}" rel="stylesheet">
+</head>
+<body>
+    <nav class="nav" tabindex="-1" onclick="this.focus()">
+        <div class="container">
+            <a class="pagename current" href="{{ url_for('main.index')}}">CoAgg</a>
+            {% for img in images %}
+                {% if img.url %}
+                    <a href="{{ url_for('main.comic', cid=img.id)}}">{{ img.name }} {% if img.new -%} <i class="ico">❊</i>{% endif -%}</a>
+
+                {% endif %}
+            {% endfor %}
+        </div>
+    </nav>
+    <div class="container">
+        {% if id %}
+            {% for img in images %}
+                {% if img.url and img.id == id %}
+                    <h2>{{ img.name }}</h2>
+                    <img src="{{ img.url }}" />
+                {% endif %}
+            {% endfor %}
+        {% else %}
+        <h1>CoAgg</h1>
+        <h2>Browse all your favorite web comics in one place</h2>
+
+        {% endif %}
+    </div>
+</body>
+</html>
