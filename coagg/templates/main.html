@@ -10,7 +10,7 @@
         <div class="container">
             <a class="pagename current" href="{{ url_for('main.index')}}">CoAgg</a>
             {% for img in images %}
-                {% if img.url %}
+                {% if img.img_url %}
                     <a href="{{ url_for('main.comic', cid=img.id)}}">{{ img.name }} {% if img.new -%} <i class="ico">❊</i>{% endif -%}</a>
 
                 {% endif %}
@@ -18,17 +18,12 @@
         </div>
     </nav>
     <div class="container">
-        {% if id %}
-            {% for img in images %}
-                {% if img.url and img.id == id %}
-                    <h2>{{ img.name }}</h2>
-                    <img src="{{ img.url }}" />
-                {% endif %}
-            {% endfor %}
+        {% if image %}
+            <h2>{{ image.name }}</h2>
+            <img src="{{ image.img_url }}" />
         {% else %}
-        <h1>CoAgg</h1>
-        <h2>Browse all your favorite web comics in one place</h2>
-
+            <h1>CoAgg</h1>
+            <h2>Browse all your favorite web comics in one place</h2>
         {% endif %}
     </div>
 </body>

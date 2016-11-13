@@ -1,32 +1,30 @@
-from flask import Blueprint, render_template, current_app, request, make_response
+from flask import Blueprint, render_template, make_response
 
-from coagg.models import get_all_links
+from coagg.models import Comic
 
 main = Blueprint('main', __name__)
 
 
 @main.route('/')
 def index():
-    urls = request.cookies.get('urls')
+    # urls = request.cookies.get('urls')
+    # new_urls = [i['url'] for i in images]
+    # resp.set_cookie('urls', ', '.join(new_urls))
 
-    images = get_all_links(current_app.config['DATA'], urls=urls)
+    images = Comic.query.all()
+
+    for i in images:
+        print(i.id)
 
     resp = make_response(render_template('main.html', images=images))
-
-    new_urls = [i['url'] for i in images]
-    resp.set_cookie('urls', ', '.join(new_urls))
     return resp
 
 
 @main.route('/<cid>')
 def comic(cid):
-    urls = request.cookies.get('urls')
+    images = Comic.query.all()
+    image = Comic.query.get_or_404(cid)
 
-    images = get_all_links(current_app.config['DATA'], urls=urls)
-
-    resp = make_response(render_template('main.html', images=images, id=cid))
-
-    new_urls = [i['url'] for i in images]
-    resp.set_cookie('urls', ', '.join(new_urls))
+    resp = make_response(render_template('main.html', images=images, image=image))
     return resp
 

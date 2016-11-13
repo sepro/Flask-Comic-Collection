@@ -1,35 +1,52 @@
-from coagg import cache
+from coagg import db
 
 import requests
 import re
-import hashlib
+import urllib
 
 
-def __get_comic(name, base_url, pattern):
-    page = requests.get(base_url)
+class Comic(db.Model):
+    __tablename__ = 'comics'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text)
+    base_url = db.Column(db.Text)
+    img_url = db.Column(db.Text)
 
-    match = re.search(pattern, page.content.decode('utf-8'))
+    new = False
 
-    url = match.group(1) if match else None
-    return {
-        'id': hashlib.md5(name.encode()).hexdigest(),
-        'name': name,
-        'base_url': base_url,
-        'url': url
-    }
+    @staticmethod
+    def __get_comic(name, base_url, pattern):
+        page = requests.get(base_url)
 
+        match = re.search(pattern, page.content.decode('utf-8'))
 
-@cache.cached(timeout=300, key_prefix='load_urls')
-def get_all_links(data, urls=None):
-    print(urls)
-    if urls is None:
-        urls = ''
+        url = match.group(1) if match else None
+        return {
+            'id': urllib.parse.quote(name.lower().replace(' ', '_')),
+            'name': name,
+            'base_url': base_url,
+            'url': url
+        }
 
-    output = [__get_comic(d['name'], d['base_url'], d['pattern']) for d in data]
+    @staticmethod
+    def update_all_links(data):
+        for d in data:
+            comic_data = Comic.__get_comic(d['name'], d['base_url'], d['pattern'])
 
-    for o in output:
-        o['new'] = o['url'] not in urls
+            comic = Comic.query.filter_by(name=comic_data['name']).first()
 
-    print(output)
+            if comic is None:
+                comic = Comic()
+                comic.name = comic_data['name']
+                comic.base_url = comic_data['base_url']
+                comic.img_url = comic_data['url']
 
-    return output
+                db.session.add(comic)
+            else:
+                comic.name = comic_data['name']
+                comic.base_url = comic_data['base_url']
+                comic.img_url = comic_data['url']
+
+            db.session.commit()
+
+        return True
