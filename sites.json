@@ -18,5 +18,10 @@
     "base_url": "http:\/\/xkcd.com\/",
     "name": "XKCD",
     "pattern": "\"(\/\/imgs.xkcd.com\/comics\/.*?)\""
+  },
+  {
+    "base_url": "http:\/\/hagarthehorrible.com\/",
+    "name": "Hagar",
+    "pattern": "\"(https:\/\/safr.kingfeatures.com\/idn\/cnfeed\/zone\/js\/content.php\\?file=.*?)\""
   }
 ]
