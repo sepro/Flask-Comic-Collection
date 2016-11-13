@@ -7,14 +7,7 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
-    # urls = request.cookies.get('urls')
-    # new_urls = [i['url'] for i in images]
-    # resp.set_cookie('urls', ', '.join(new_urls))
-
     images = Comic.query.all()
-
-    for i in images:
-        print(i.id)
 
     resp = make_response(render_template('main.html', images=images))
     return resp

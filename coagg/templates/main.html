@@ -12,7 +12,6 @@
             {% for img in images %}
                 {% if img.img_url %}
                     <a href="{{ url_for('main.comic', cid=img.id)}}">{{ img.name }} {% if img.new -%} <i class="ico">❊</i>{% endif -%}</a>
-
                 {% endif %}
             {% endfor %}
         </div>
