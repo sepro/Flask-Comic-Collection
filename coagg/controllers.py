@@ -2,6 +2,8 @@ from flask import Blueprint, render_template, make_response, request
 
 from coagg.models import Comic
 
+from datetime import timedelta, date
+
 main = Blueprint('main', __name__)
 
 
@@ -30,7 +32,8 @@ def comic(cid):
 
     resp = make_response(render_template('main.html', images=images, image=image))
 
-    resp.set_cookie(str(cid), image.img_url)
+    expires = date.today() + timedelta(days=7)
+    resp.set_cookie(str(cid), image.img_url, expires=expires.ctime())
 
     return resp
 
