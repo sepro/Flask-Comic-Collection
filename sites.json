@@ -33,5 +33,10 @@
     "base_url": "http:\/\/poorlydrawnlines.com\/",
     "name": "Poorly Drawn Lines",
     "pattern": "\"(http:\/\/poorlydrawnlines.com\/wp-content\/uploads\/.*?)\""
+  },
+  {
+    "base_url": "http://www.smbc-comics.com/",
+    "name": "SMBC",
+    "pattern": "\"(http:\/\/www.smbc-comics.com\/comics\/.*?)\""
   }
 ]
