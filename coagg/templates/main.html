@@ -1,21 +1,37 @@
 <html>
 <head>
-    <meta name=viewport content="width=device-width,initial-scale=1">
     <title>Comic Aggregator</title>
-    <link href="{{ url_for('static',filename='css/min.css') }}" rel="stylesheet">
+
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="{{ url_for('static',filename='css/materialize.min.css') }}" rel="stylesheet" media="screen,projection">
     <link href="{{ url_for('static',filename='css/main.css') }}" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-    <nav class="nav" tabindex="-1" onclick="this.focus()">
-        <div class="container">
-            <a class="pagename current" href="{{ url_for('main.index')}}">CoAgg</a>
-            {% for img in images %}
-                {% if img.img_url %}
-                    <a href="{{ url_for('main.comic', cid=img.id)}}">{{ img.name }} {% if img.new -%} <i class="ico">❊</i>{% endif -%}</a>
-                {% endif %}
-            {% endfor %}
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper light-blue darken-4">
+          <a href="{{ url_for('main.index')}}" class="brand-logo">CoAgg</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+              <ul class="right hide-on-med-and-down">
+                    {% for img in images %}
+                        {% if img.img_url %}
+                            <li><a href="{{ url_for('main.comic', cid=img.id)}}">{{ img.name }} {% if img.new -%} <i class="ico">❊</i>{% endif -%}</a></li>
+                        {% endif %}
+                    {% endfor %}
+              </ul>
+              <ul class="side-nav" id="mobile-demo">
+                {% for img in images %}
+                    {% if img.img_url %}
+                        <li><a href="{{ url_for('main.comic', cid=img.id)}}">{{ img.name }} {% if img.new -%} <i class="ico">❊</i>{% endif -%}</a></li>
+                    {% endif %}
+                {% endfor %}
+              </ul>
         </div>
-    </nav>
+      </nav>
+    </div>
     <div class="container">
         {% if image %}
             <h2>{{ image.name }}</h2>
@@ -25,5 +41,12 @@
             <h2>Browse all your favorite web comics in one place</h2>
         {% endif %}
     </div>
+    <script src="{{ url_for('static',filename='js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/materialize.min.js') }}"></script>
+    <script>
+        $( document ).ready(function(){
+            $(".button-collapse").sideNav();
+        })
+    </script>
 </body>
 </html>
