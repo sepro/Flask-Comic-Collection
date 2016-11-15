@@ -23,5 +23,15 @@
     "base_url": "http:\/\/hagarthehorrible.com\/",
     "name": "Hagar",
     "pattern": "\"(https:\/\/safr.kingfeatures.com\/idn\/cnfeed\/zone\/js\/content.php\\?file=.*?)\""
+  },
+  {
+    "base_url": "http:\/\/www.phdcomics.com\/",
+    "name": "PhD Comic",
+    "pattern": "'(http:\/\/www.phdcomics.com\/comics\/archive\/.*?)'"
+  },
+  {
+    "base_url": "http:\/\/poorlydrawnlines.com\/",
+    "name": "Poorly Drawn Lines",
+    "pattern": "\"(http:\/\/poorlydrawnlines.com\/wp-content\/uploads\/.*?)\""
   }
 ]

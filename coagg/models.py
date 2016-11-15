@@ -31,9 +31,12 @@ class Comic(db.Model):
     @staticmethod
     def update_all_links(data):
         for d in data:
-            comic_data = Comic.__get_comic(d['name'], d['base_url'], d['pattern'])
+            print("Getting %s ..." % d['name'])
 
+            comic_data = Comic.__get_comic(d['name'], d['base_url'], d['pattern'])
             comic = Comic.query.filter_by(name=comic_data['name']).first()
+
+            print("Getting %s ..." % comic_data['url'])
 
             if comic is None:
                 comic = Comic()
