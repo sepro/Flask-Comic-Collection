@@ -16,21 +16,31 @@
           <nav>
             <div class="nav-wrapper light-blue darken-4">
               <a href="{{ url_for('main.index')}}" class="brand-logo">CoAgg</a>
-                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="fa fa-bars fa-3x" aria-hidden="true"></i></a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse" id="menu-button"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
+                <a href="#" data-activates="messages" class="button-collapse button-messages right"><i class="fa fa-cogs fa-2x" aria-hidden="true"></i></a>
                   <ul class="right hide-on-med-and-down">
-                        {% for img in images %}
+                        {% for img in g.images %}
                             {% if img.img_url %}
                                 <li><a href="{{ url_for('main.comic', cid=img.id)}}">{{ img.name }} {% if img.new -%} <i class="fa fa-asterisk ico" aria-hidden="true"></i>{% endif -%}</a></li>
                             {% endif %}
                         {% endfor %}
+                      <li><a href="#" data-activates="messages" class="button-messages"><i class="fa fa-cogs fa-2x" aria-hidden="true"></i></a></li>
                   </ul>
                   <ul class="side-nav" id="mobile-demo">
-                    {% for img in images %}
+                    {% for img in g.images %}
                         {% if img.img_url %}
                             <li><a href="{{ url_for('main.comic', cid=img.id)}}">{{ img.name }} {% if img.new -%} <span><i class="fa fa-asterisk ico" aria-hidden="true"></i></span>{% endif -%}</a></li>
                         {% endif %}
                     {% endfor %}
                   </ul>
+                  {% if g.messages %}
+                    <ul class="side-nav" id="messages">
+                        <li class="light-blue darken-3 white-text"><a href="#">Messages</a></li>
+                        {% for message in g.messages %}
+                        <li class="message"><a href="#"><span class="light-blue-text">{{ message.created.strftime('%Y-%m-%d %H:%M') }}</span> - {{ message.message }}</a></li>
+                        {% endfor %}
+                    </ul>
+                  {% endif %}
             </div>
           </nav>
         </div>
@@ -41,8 +51,15 @@
                 <h2>{{ image.name }}</h2>
                 <img src="{{ image.img_url }}" />
             {% else %}
-                <h1>CoAgg</h1>
-                <h2>Browse all your favorite web comics in one place</h2>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <h1>CoAgg</h1>
+                        <h5 class="light-blue-text">Browse all your favorite web comics in one place</h5>
+                    </div>
+                    <div class="col s12 m6">
+
+                    </div>
+                </div>
             {% endif %}
         </div>
     </main>
@@ -57,7 +74,13 @@
     <script src="{{ url_for('static',filename='js/materialize.min.js') }}"></script>
     <script>
         $( document ).ready(function(){
-            $(".button-collapse").sideNav();
+            $("#menu-button").sideNav();
+            $(".button-messages").sideNav({
+              menuWidth: 300, // Default is 240
+              edge: 'right', // Choose the horizontal origin
+              closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+              draggable: true // Choose whether you can drag to open on touch screens
+            });
         })
     </script>
 </body>

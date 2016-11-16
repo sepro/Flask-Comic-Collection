@@ -25,3 +25,8 @@ main {
 footer.page-footer {
     padding-top: 0px;
 }
+
+li.message, .message a {
+    height: auto;
+    line-height: 28px;
+}

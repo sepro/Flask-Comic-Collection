@@ -4,6 +4,15 @@ import requests
 import re
 import urllib
 
+from datetime import datetime
+
+
+class Message(db.Model):
+    __tablename__ = 'messages'
+    id = db.Column(db.Integer, primary_key=True)
+    message = db.Column(db.Text)
+    created = db.Column(db.DateTime, default=datetime.utcnow)
+
 
 class Comic(db.Model):
     __tablename__ = 'comics'
@@ -30,6 +39,8 @@ class Comic(db.Model):
 
     @staticmethod
     def update_all_links(data):
+        new = 0
+
         for d in data:
             print("Getting %s ..." % d['name'])
 
@@ -45,11 +56,24 @@ class Comic(db.Model):
                 comic.img_url = comic_data['url']
 
                 db.session.add(comic)
+                new += 1
             else:
-                comic.name = comic_data['name']
-                comic.base_url = comic_data['base_url']
-                comic.img_url = comic_data['url']
+                if comic.img_url != comic_data['url']:
+                    comic.img_url = comic_data['url']
+                    new += 1
 
             db.session.commit()
+
+        msg = Message()
+
+        if new > 1:
+            msg.message = 'Update complete: found %d new comics' % new
+        elif new == 1:
+            msg.message = 'Update complete: found %d new comic' % new
+        else:
+            msg.message = 'Update complete: no new comics found'
+
+        db.session.add(msg)
+        db.session.commit()
 
         return True
