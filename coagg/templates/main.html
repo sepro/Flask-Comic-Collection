@@ -27,6 +27,16 @@
                       <li><a href="#" data-activates="messages" class="button-messages"><i class="fa fa-cogs fa-2x" aria-hidden="true"></i></a></li>
                   </ul>
                   <ul class="side-nav" id="mobile-demo">
+                      <li>
+                          <div class="userView">
+                            <div class="background">
+                              <img src="{{ url_for('static', filename='img/banner_01.jpg') }}">
+                            </div>
+                            <div class="side-title">
+                                <a href="#" class="white-text name">Comics</a>
+                            </div>
+                        </div>
+                      </li>
                     {% for img in g.images %}
                         {% if img.img_url %}
                             <li><a href="{{ url_for('main.comic', cid=img.id)}}">{{ img.name }} {% if img.new -%} <span><i class="fa fa-asterisk ico" aria-hidden="true"></i></span>{% endif -%}</a></li>
@@ -35,7 +45,16 @@
                   </ul>
                   {% if g.messages %}
                     <ul class="side-nav" id="messages">
-                        <li class="light-blue darken-3 white-text"><a href="#">Messages</a></li>
+                      <li>
+                          <div class="userView">
+                            <div class="background">
+                              <img src="{{ url_for('static', filename='img/banner_02.jpg') }}">
+                            </div>
+                            <div class="side-title">
+                                <a href="#" class="white-text name">Messages</a>
+                            </div>
+                        </div>
+                      </li>
                         {% for message in g.messages %}
                         <li class="message"><a href="#"><span class="light-blue-text">{{ message.created.strftime('%Y-%m-%d %H:%M') }}</span> - {{ message.message }}</a></li>
                         {% endfor %}
@@ -74,7 +93,12 @@
     <script src="{{ url_for('static',filename='js/materialize.min.js') }}"></script>
     <script>
         $( document ).ready(function(){
-            $("#menu-button").sideNav();
+            $("#menu-button").sideNav({
+              menuWidth: 300, // Default is 240
+              edge: 'left', // Choose the horizontal origin
+              closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+              draggable: true // Choose whether you can drag to open on touch screens
+            });
             $(".button-messages").sideNav({
               menuWidth: 300, // Default is 240
               edge: 'right', // Choose the horizontal origin

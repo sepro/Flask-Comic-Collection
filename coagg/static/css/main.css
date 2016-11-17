@@ -30,3 +30,21 @@ li.message, .message a {
     height: auto;
     line-height: 28px;
 }
+
+.side-title {
+    background: rgb(50, 50, 50); /* Fallback */
+    background: rgba(50, 50, 50, 0.5);
+    margin-top: 120px;
+    margin-left: -1px;
+    margin-right: -1px;
+    margin-bottom: -1px;
+    padding-top: 1px;
+}
+
+.userView {
+    padding: 1px !important;
+}
+
+.side-title a {
+    font-size: 24pt !important;
+}
