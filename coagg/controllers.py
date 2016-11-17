@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, make_response
+from flask import Blueprint, render_template, make_response, redirect, current_app, url_for
 
 from coagg.models import Comic
 
@@ -13,7 +13,7 @@ def index():
     return resp
 
 
-@main.route('/<cid>')
+@main.route('/comic/<cid>')
 def comic(cid):
     image = Comic.query.get_or_404(cid)
 
@@ -24,3 +24,9 @@ def comic(cid):
 
     return resp
 
+
+@main.route('/update')
+def force_update():
+    Comic.update_all_links(current_app.config['DATA'])
+
+    return redirect(url_for('main.index'))

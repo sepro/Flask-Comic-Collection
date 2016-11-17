@@ -7,8 +7,6 @@ TESTING = True
 
 SECRET_KEY = "change me"
 
-CACHE_TYPE = 'simple'
-
 # Database settings, database location and path to migration scripts
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'db', 'comics.db')
 SQLALCHEMY_TRACK_MODIFICATIONS = False

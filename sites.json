@@ -35,8 +35,13 @@
     "pattern": "\"(http:\/\/poorlydrawnlines.com\/wp-content\/uploads\/.*?)\""
   },
   {
-    "base_url": "http://www.smbc-comics.com/",
+    "base_url": "http:\/\/www.smbc-comics.com\/",
     "name": "SMBC",
     "pattern": "\"(http:\/\/www.smbc-comics.com\/comics\/.*?)\""
+  },
+  {
+    "base_url": "http:\/\/www.csectioncomics.com\/",
+    "name": "c-section",
+    "pattern": "src=\"(http:\/\/cdn.csectioncomics.com\/csectioncomics\/wp-content\/uploads\/.*?)\""
   }
 ]
