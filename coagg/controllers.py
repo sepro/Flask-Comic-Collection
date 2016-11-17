@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template, make_response, request
+from flask import Blueprint, render_template, make_response
 
-from coagg.models import Comic, Message
+from coagg.models import Comic
 
 from datetime import timedelta, date
 
@@ -9,7 +9,6 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
-
     resp = make_response(render_template('main.html'))
     return resp
 

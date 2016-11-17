@@ -1,9 +1,7 @@
 from flask import Flask, g, request
-from flask_cache import Cache
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
-cache = Cache()
 
 
 def create_app(config):
@@ -13,8 +11,6 @@ def create_app(config):
 
     db.app = app
     db.init_app(app)
-
-    cache.init_app(app)
 
     from coagg.controllers import main
     from coagg.models import Comic, Message
