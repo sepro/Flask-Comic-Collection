@@ -54,6 +54,8 @@ li.message, .message a {
     display: flex;
     justify-content: center; /* align horizontal */
     align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 
