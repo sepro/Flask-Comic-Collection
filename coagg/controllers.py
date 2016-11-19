@@ -27,6 +27,7 @@ def comic(cid):
 
 @main.route('/update')
 def force_update():
-    Comic.update_all_links(current_app.config['DATA'])
+    if current_app.config['ALLOW_UPDATE']:
+        Comic.update_all_links(current_app.config['DATA'])
 
     return redirect(url_for('main.index'))

@@ -53,10 +53,14 @@
                               <img src="{{ url_for('static', filename=right_banners|random) }}">
                             </div>
                             <div class="side-title">
-                                <a href="#" class="white-text name">Messages</a>
+                                <a href="#" class="white-text name">Controls</a>
                             </div>
                         </div>
                       </li>
+                          {% if g.allow_update %}
+                          <li><a class="waves-effect waves-light btn" id="update-button"><i class="fa fa-refresh right" aria-hidden="true"></i>Update now</a></li>
+                          <li><div class="divider"></div></li>
+                          {% endif %}
                         {% for message in g.messages %}
                         <li class="message"><a href="#"><span class="light-blue-text">{{ message.created.strftime('%Y-%m-%d %H:%M') }}</span> - {{ message.message }}</a></li>
                         {% endfor %}
@@ -106,6 +110,12 @@
               edge: 'right', // Choose the horizontal origin
               closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
               draggable: true // Choose whether you can drag to open on touch screens
+            });
+            $("#update-button").click(function() {
+                Materialize.toast('Loading Comics ... ', 4000);
+                $.get( "{{ url_for('main.force_update')}}", function( data ) {
+                  Materialize.toast('Update Complete', 4000);
+                });
             });
         })
     </script>

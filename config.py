@@ -12,6 +12,10 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'db', 'comics.db'
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SQLALCHEMY_ECHO = False
 
+# Setting allow updates to True will add an Update button to the config panel, where the users can force
+# the app to check for new comics
+ALLOW_UPDATE = True
+
 DATA_FILE = "sites.json"
 DATA = []
 with open(DATA_FILE, "r") as f:

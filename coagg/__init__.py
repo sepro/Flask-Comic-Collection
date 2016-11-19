@@ -23,6 +23,8 @@ def create_app(config):
 
         g.images = Comic.query.all()
 
+        g.allow_update = app.config['ALLOW_UPDATE']
+
         for i in g.images:
             cookie_url = request.cookies.get(str(i.id))
             if cookie_url != i.img_url:
