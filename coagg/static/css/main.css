@@ -48,3 +48,23 @@ li.message, .message a {
 .side-title a {
     font-size: 24pt !important;
 }
+
+#logo-div {
+    height: 56px;
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center;
+}
+
+
+@media only screen and (min-width: 601px) {
+    #logo-div {
+        height: 64px !important;
+    }
+}
+
+
+#comic-book-logo {
+    height: 48px;
+    width: auto;
+}
