@@ -64,6 +64,7 @@
                         {% for message in g.messages %}
                         <li class="message"><a href="#"><span class="light-blue-text">{{ message.created.strftime('%Y-%m-%d %H:%M') }}</span> - {{ message.message }}</a></li>
                         {% endfor %}
+                        <li><div class="divider"></div></li>
                     </ul>
                   {% endif %}
             </div>

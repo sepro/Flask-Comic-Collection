@@ -42,6 +42,6 @@
   {
     "base_url": "http:\/\/www.csectioncomics.com\/",
     "name": "c-section",
-    "pattern": "src=\"(http:\/\/cdn.csectioncomics.com\/csectioncomics\/wp-content\/uploads\/.*?)\""
+    "pattern": "src=\"(http:\/\/www.csectioncomics.com\/csectioncomics\/wp-content\/uploads\/.*?)\""
   }
 ]
