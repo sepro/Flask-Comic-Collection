@@ -74,7 +74,7 @@
     <main>
         <div class="container">
             {% if image %}
-                <h2>{{ image.name }}</h2>
+                <h2>{{ image.name }} <small><a href="{{image.base_url}}"><i class="fa fa-external-link" aria-hidden="true"></i></a></small></h2>
                 <img src="{{ image.img_url }}" />
             {% else %}
                 <div class="row">
