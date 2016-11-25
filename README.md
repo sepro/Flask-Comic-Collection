@@ -2,6 +2,8 @@
 
 Flask Comic Collection runs on a lightweight server (e.g. a raspberry pi) and check if new episodes of your favorite webcomics have been released and combines them into a single website.
 
+![screenshot](./docs/screenshot.png)
+
 ## Installation
 
 First get the code from github
