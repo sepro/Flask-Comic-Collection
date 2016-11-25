@@ -60,8 +60,9 @@ After activating the virtual environment and configuring sites.json you can upda
     
 However, it is recommended to set up a cron job once or twice a day to do this. Add (!) the following line (after updating the paths to match your installation) to */etc/crontab*
 
-    TODO add this
+    0 5,17  * * *   sepro   cd /home/sepro/git/CoAgg && /home/sepro/git/CoAgg/venv/bin/python /home/sepro/git/CoAgg/db_action.py update
     
+This will check twice a day for new comics (at 5 am and 5 pm)
 
 ## Setting up the a Flask app with a webserver
 
