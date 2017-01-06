@@ -43,5 +43,10 @@
     "base_url": "http:\/\/www.csectioncomics.com\/",
     "name": "c-section",
     "pattern": "src=\"(http:\/\/www.csectioncomics.com\/csectioncomics\/wp-content\/uploads\/.*?)\""
+  },
+  {
+    "base_url": "http:\/\/thedevilspanties.com\/",
+    "name": "Devil's panties",
+    "pattern": "src=\"(http:\/\/origin.thedevilspanties.com\/comics\/.*?)\""
   }
 ]
