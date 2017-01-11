@@ -1,8 +1,8 @@
 [
   {
-    "base_url": "https:\/\/garfield.com\/",
+    "base_url": "http://www.hoodcomputing.com/garfield.php",
     "name": "Garfield",
-    "pattern": "\"(https:\/\/\\w+\\.cloudfront\\.net\/comics\/garfield\/.*?)\""
+    "pattern": "<link>(https:\/\/s3.amazonaws.com\/static.garfield.com\/comics\/garfield\/.*?)<\/link>"
   },
   {
     "base_url": "http:\/\/dilbert.com\/",
