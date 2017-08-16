@@ -48,5 +48,11 @@
     "base_url": "http:\/\/thedevilspanties.com\/",
     "name": "Devil's panties",
     "pattern": "src=\"(http:\/\/thedevilspanties.com\/comics\/.*?)\""
+  },
+  {
+    "base_url": "http:\/\/rustledjimmies.net\/",
+    "name": "RustledJimmies",
+    "pattern": "img src=\"(.*?tumblr.com.*?)\" alt"
+
   }
 ]
