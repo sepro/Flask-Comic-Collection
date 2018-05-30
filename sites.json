@@ -35,9 +35,9 @@
     "pattern": "\"(http:\/\/www.poorlydrawnlines.com\/wp-content\/uploads\/.*?)\""
   },
   {
-    "base_url": "http:\/\/www.csectioncomics.com\/",
+    "base_url": "https:\/\/www.csectioncomics.com\/",
     "name": "c-section",
-    "pattern": "src=\"(https:\/\/www.csectioncomics.com\/csectioncomics\/wp-content\/uploads\/.*?)\""
+    "pattern": "src=\"(https:\/\/www.csectioncomics.com\/csectioncomics\/wp-content\/uploads\/.*?.jpg)\"(?= alt)"
   },
   {
     "base_url": "http:\/\/thedevilspanties.com\/",
