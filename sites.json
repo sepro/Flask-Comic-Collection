@@ -35,14 +35,9 @@
     "pattern": "\"(http:\/\/www.poorlydrawnlines.com\/wp-content\/uploads\/.*?)\""
   },
   {
-    "base_url": "http:\/\/www.smbc-comics.com\/",
-    "name": "SMBC",
-    "pattern": "\"(http:\/\/www.smbc-comics.com\/comics\/.*?)\""
-  },
-  {
     "base_url": "http:\/\/www.csectioncomics.com\/",
     "name": "c-section",
-    "pattern": "src=\"(http:\/\/cdn.csectioncomics.com\/csectioncomics\/wp-content\/uploads\/.*?)\""
+    "pattern": "src=\"(https:\/\/www.csectioncomics.com\/csectioncomics\/wp-content\/uploads\/.*?)\""
   },
   {
     "base_url": "http:\/\/thedevilspanties.com\/",
@@ -53,6 +48,5 @@
     "base_url": "http:\/\/rustledjimmies.net\/",
     "name": "RustledJimmies",
     "pattern": "img src=\"(.*?tumblr.com.*?)\" alt"
-
   }
 ]

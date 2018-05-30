@@ -1,4 +1,4 @@
 [flake8]
 ignore = E501
-exclude = docs/*, env/*
+exclude = docs/*, env/*, db/*
 max-complexity = 16
