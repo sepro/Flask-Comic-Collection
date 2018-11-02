@@ -45,8 +45,9 @@
     "pattern": "src=\"(http:\/\/thedevilspanties.com\/comics\/.*?)\""
   },
   {
-    "base_url": "http:\/\/rustledjimmies.net\/",
+    "base_url": "https:\/\/www.rustledjimmies.net\/",
     "name": "RustledJimmies",
-    "pattern": "img src=\"(.*?tumblr.com.*?)\" alt"
+    "pattern": "img data-src=\"(\/img\/comic\/.*?.jpg)\"",
+    "combine_base": true
   }
 ]

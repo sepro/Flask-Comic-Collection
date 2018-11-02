@@ -26,15 +26,18 @@ class Comic(db.Model):
 
     @staticmethod
     def update_all_links(data):
-        def parse_pages(base_urls, patterns):
+        def parse_pages(base_urls, patterns, combine_base):
             pages = fetch_all(base_urls)
 
             results = []
 
-            for base_url, pattern, page in zip(base_urls, patterns, pages):
+            for base_url, pattern, page, cb in zip(base_urls, patterns, pages, combine_base):
                 match = re.search(pattern, page)
                 try:
-                    results.append(match.group(1))
+                    if cb:
+                        results.append(base_url + match.group(1))
+                    else:
+                        results.append(match.group(1))
                 except Exception as _:
                     print("Problem found parsing {} with pattern \"{}\"".format(base_url, pattern))
                     results.append(None)
@@ -43,7 +46,9 @@ class Comic(db.Model):
 
         new = 0
 
-        urls = parse_pages([d['base_url'] for d in data], [d['pattern'] for d in data])
+        urls = parse_pages([d['base_url'] for d in data],
+                           [d['pattern'] for d in data],
+                           [d['combine_base'] if 'combine_base' in d.keys() else False for d in data])
 
         for d, url in zip(data, urls):
             print("Getting %s ..." % d['name'])
